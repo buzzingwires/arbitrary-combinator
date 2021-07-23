@@ -32,7 +32,6 @@ class WordList:
 	def __init__(self):
 		self.words = OrderedDict()
 		self.iterator = None
-		self._PrepareIterator()
 
 def MakeSpaceList():
 	output = WordList()
