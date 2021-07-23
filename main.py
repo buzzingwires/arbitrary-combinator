@@ -56,23 +56,25 @@ def GenerateWordLists(args):
 		WordLists.append(wl)
 	return WordLists
 
-def PrintWords(WordLists, parts = []):
+def PrintWords(WordLists, parts):
 	for wl in WordLists:
 		wl.reset()
 		while True:
 			w = wl.GetWord()
 			if w is not None:
-				parts.append(w)
+				parts[len(parts) - len(WordLists)] = w
 				print( ''.join(parts) )
 				PrintWords(WordLists[1:], parts)
-				parts.pop()
 			else:
+				for i in range( len(parts) - len(WordLists), len(parts) ):
+					parts[i] = ''
 				break
 
 def main():
 	args = ParseCommandLine()
 	WordLists = GenerateWordLists(args)
-	PrintWords(WordLists)
+	parts = ['' for wl in WordLists]
+	PrintWords(WordLists, parts)
 
 if __name__ == '__main__':
 	main()
