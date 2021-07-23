@@ -1,14 +1,5 @@
 from collections import OrderedDict
-from itertools import permutations
 import argparse
-
-def SwapCase(word):
-	output = word
-	if output[0].isupper():
-		output = ''.join( (output[0].lower(), output[1:]) )
-	else:
-		output = ''.join( (output[0].upper(), output[1:]) )
-	return output
 
 class WordList:
 	def _PrepareIterator(self):
@@ -32,12 +23,6 @@ class WordList:
 	def __init__(self):
 		self.words = OrderedDict()
 		self.iterator = None
-
-def MakeSpaceList():
-	output = WordList()
-	output.AddWord('')
-	output.AddWord(' ')
-	return output
 
 def ParseCommandLine():
 	"Function to create a command line argument parser, and return the args object from it."
