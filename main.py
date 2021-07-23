@@ -57,7 +57,8 @@ def GenerateWordLists(args):
 	return WordLists
 
 def PrintWords(WordLists, parts):
-	for wl in WordLists:
+	if WordLists:
+		wl = WordLists[0]
 		wl.reset()
 		while True:
 			w = wl.GetWord()
